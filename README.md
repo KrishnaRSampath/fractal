@@ -9,3 +9,4 @@ To explore creating your own visual images using the Turtle library, <a href="ht
 <h4>Current Status (2/8/2015):</h4>
 - Currently, the tree prints offset to the left.
 - Need to break out the "turtle walking back down the tree" portion into its own function, to simplify the algorithm of tree creation.
+~~- Also, `total_nodes` should be set to 2 to the power of `max_depth`, rather than 3 (fixed, based on the test case of a tree of `max_depth` 3).~~ DONE.
