@@ -1,7 +1,7 @@
 # fractal.py
 import turtle
 
-def fractal_tree(trunk_length):
+def fractal_tree(trunk_length, max_depth):
 	window = turtle.Screen()
 	window.bgcolor("black")
 
@@ -12,9 +12,8 @@ def fractal_tree(trunk_length):
 	tree.left(90)
 	tree.forward(trunk_length)
 
-	max_depth = 3
 	angle = 25
-	total_nodes = 2**3
+	total_nodes = 2**max_depth
 	nodes_done = 0
 
 	# Call Recursive function "Tree-Builder"
@@ -47,5 +46,5 @@ def tree_builder(tree, max_depth, current_depth, branch_length, angle, total_nod
 	tree.forward(branch_length)
 	tree_builder(tree, max_depth, current_depth+1, branch_length, angle, total_nodes, nodes_done)
 
-
-fractal_tree(50)
+# Specify the length of the trunk and the max depth of the tree.
+fractal_tree(50, 3)
