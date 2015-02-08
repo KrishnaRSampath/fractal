@@ -7,7 +7,7 @@ def fractal_tree(trunk_length):
 
 	tree = turtle.Turtle()
 	tree.color("yellow")
-	tree.speed(2)
+	tree.speed(5)
 
 	tree.left(90)
 	tree.forward(trunk_length)
@@ -48,6 +48,4 @@ def tree_builder(tree, max_depth, current_depth, branch_length, angle, total_nod
 	tree_builder(tree, max_depth, current_depth+1, branch_length, angle, total_nodes, nodes_done)
 
 
-
 fractal_tree(50)
-
