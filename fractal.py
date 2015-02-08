@@ -5,47 +5,47 @@ def fractal_tree(trunk_length):
 	window = turtle.Screen()
 	window.bgcolor("black")
 
-	t = turtle.Turtle()
-	t.color("yellow")
-	t.speed(3)
+	tree = turtle.Turtle()
+	tree.color("yellow")
+	tree.speed(2)
 
-	t.left(90)
-	t.forward(trunk_length)
+	tree.left(90)
+	tree.forward(trunk_length)
 
-	depth = 3
-	left_fork(t, trunk_length, depth)
-	t.backward(trunk_length)
-	right_fork(t, trunk_length, depth-1 )
-	left_fork(t, trunk_length, depth-2)
-	t.backward(trunk_length)
-	right_fork(t, trunk_length, depth-2 )
-	left_fork(t, trunk_length, depth-3)
+	max_depth = 3
+	angle = 25
+	total_nodes = 2**3
+	nodes_done = 0
 
+	# Call Recursive function "Tree-Builder"
+	tree_builder(tree, max_depth, 0, trunk_length, angle, total_nodes, nodes_done)
 
- 	window.exitonclick()
+	window.exitonclick()
 
+def tree_builder(tree, max_depth, current_depth, branch_length, angle, total_nodes, nodes_done):
 
+	#Done with whole tree when?
+	if nodes_done == total_nodes:
+		return
 
+	if current_depth > max_depth:
+		tree.circle(100)
 
-def left_fork(turtle, branch_length, depth):
- 	if depth == 0:
- 		turtle.backward(branch_length)
- 		right_fork(turtle,branch_length, depth+1)
- 		return
+	if current_depth == max_depth:
+		nodes_done += 1
+		tree.backward(branch_length)
+		tree.right(angle*2)
+		tree.forward(branch_length)
+		nodes_done += 1
+		tree.backward(branch_length)
+		tree.left(angle)
+		tree.backward(branch_length)
+		tree.right(angle*3)
+		current_depth -= 2
 
-	turtle.left(25)
-	turtle.forward(branch_length)
-	left_fork(turtle, branch_length, depth-1)
-
-
-def right_fork(turtle, branch_length, depth):
-	if depth == 0:
- 		turtle.backward(branch_length)
- 		return
-	turtle.right(25)
-	turtle.forward(branch_length)
-	right_fork(turtle, branch_length, depth-1)
-	
+	tree.left(angle)
+	tree.forward(branch_length)
+	tree_builder(tree, max_depth, current_depth+1, branch_length, angle, total_nodes, nodes_done)
 
 
 
